@@ -1,7 +1,7 @@
 import { ApiCategory } from "./category";
 import { ApiMoneyBucket } from "./moneyBucket";
 
-export type ApiTransaction = {
+export interface ApiTransaction {
     id: number;
     moneyBucketId: number;
     bucket: ApiMoneyBucket;

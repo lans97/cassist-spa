@@ -1,4 +1,4 @@
-export type ApiRole = {
+export interface ApiRole {
     id: number;
-    name: string;
+    name: "admin" | "user";
 }

@@ -1,6 +1,6 @@
 import { FrontUser } from "./user";
 
-export type FrontMoneyBucket = {
+export interface FrontMoneyBucket {
     id: number;
     user: FrontUser;
     name: string;

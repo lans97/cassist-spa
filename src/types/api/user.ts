@@ -1,13 +1,13 @@
 import { ApiRole } from "./role";
 
-export type ApiUser = {
+export interface ApiUser {
     id: number;
     uuid: string;
     email: string;
-    display_name: string;
+    displayName: string;
     role: ApiRole;
-    email_verified: boolean;
-    created_at: string;
-    updated_at: string;
-    deleted_at: string;
+    emailVerified: boolean;
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: string;
 }

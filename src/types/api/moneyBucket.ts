@@ -1,6 +1,6 @@
 import { ApiUser } from "./user";
 
-export type ApiMoneyBucket = {
+export interface ApiMoneyBucket {
     id: number;
     userId: number;
     user: ApiUser;

@@ -1,6 +1,6 @@
 import { ApiUser } from "./user";
 
-export type ApiCategory = {
+export interface ApiCategory {
     id: number;
     userId: number;
     user: ApiUser;

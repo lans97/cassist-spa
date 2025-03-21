@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom'
-import api from '../api/api'
-import { auth, signOut } from '../utils/firebase'
+import { useNavigate } from "react-router-dom"
+import { auth } from "../../firebase/config/firebaseConfig"
+import { signOut } from "../../firebase/auth/firebaseAuth"
 
 function HomePage() {
     const navigate = useNavigate()
@@ -8,10 +8,10 @@ function HomePage() {
     const HandleLogout = async () => {
         try {
             await signOut(auth)
-            localStorage.removeItem('user')
-            navigate('/')
+            localStorage.removeItem("user")
+            navigate("/")
         } catch (error) {
-            console.error('Logout failed', error)
+            console.error("Logout failed", error)
         }
     }
 
@@ -24,4 +24,4 @@ function HomePage() {
     )
 }
 
-export default HomePage;
+export default HomePage
