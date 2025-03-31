@@ -1,4 +1,9 @@
-function DashboardUsers() {
+import api from "../../services/api";
+
+function UsersTables() {
+
+    const getUsers = async () => {
+    }
 
     return (
         <div>
@@ -23,4 +28,4 @@ function DashboardUsers() {
     )
 }
 
-export default DashboardUsers;
+export default UsersTables;

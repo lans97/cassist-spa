@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { loginUser, authWithGoogle } from "../../firebase/auth/firebaseAuth"
+import { signUpUser, authWithGoogle } from "../../firebase/auth/firebaseAuth"
 import { useNavigate } from "react-router-dom"
 
-function LoginForm() {
+function SignupForm() {
     const navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -10,23 +10,38 @@ function LoginForm() {
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
         try {
-            await loginUser(email, password);
+            const user = await signUpUser(email, password);
+            localStorage.setItem("user", JSON.stringify({
+                uid: user.uid,
+                email: user.email,
+                displayName: user.displayName,
+                photoUrl: user.photoURL,
+            }));
+            sessionStorage.setItem("user", JSON.stringify({
+                accessToken: user.getIdToken,
+            }));
             navigate("/home");
         } catch (error) {
             if (error instanceof Error) {
-                alert(error.message);
+                alert(error.message)
             }
         }
     }
 
     async function handleGoogleLogin(e: React.FormEvent) {
-        e.preventDefault();
+        e.preventDefault()
         try {
-            await authWithGoogle();
-            navigate("/home");
+            const user = await authWithGoogle()
+            localStorage.setItem("user", JSON.stringify({
+                uid: user.uid,
+                email: user.email,
+                displayName: user.displayName,
+                photoUrl: user.photoURL,
+            }));
+            navigate("/home")
         } catch (error) {
             if (error instanceof Error) {
-                alert(error.message);
+                alert(error.message)
             }
         }
     }
@@ -58,4 +73,4 @@ function LoginForm() {
     )
 }
 
-export default LoginForm
+export default SignupForm;
